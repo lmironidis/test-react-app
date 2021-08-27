@@ -6,17 +6,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
 
-  // React-Bootstrap Handle Submit form
-  const [validated, setValidated] = useState(false);
-  const handleSubmit = (event) => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    setValidated(true);
-  };
-
   return (
     <div className="container-fluid">
       <div className="row">
@@ -25,14 +14,9 @@ function App() {
 
           <Form
             name="contact-v1"
-            method="POST"
+            method="post"
             data-netlify="true"
-            onSubmit={handleSubmit}
-            noValidate
-            validated={validated}
-            >
-
-            <Form.Control type="hidden" name="form-name" value="contact-v1"/>
+            onSubmit="submit">
 
             <Form.Group className="mb-3" controlId="contact-v1.NameInput">
               <FloatingLabel controlId="floatingInput" label="Your Name" className="mb-3">
