@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import Form from 'react-bootstrap/Form'
+import FloatingLabel from 'react-bootstrap/FloatingLabel'
 import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
+
+  // React-Bootstrap Handle Submit form
+  const [validated, setValidated] = useState(false);
+  const handleSubmit = (event) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    setValidated(true);
+  };
 
   return (
     <div className="container-fluid">
@@ -14,56 +27,58 @@ function App() {
           <Form
             name="contactv1"
             method="POST"
-            data-netlify="true"
-            onSubmit="submit">
+            noValidate
+            validated={validated}
+            onSubmit={handleSubmit}>
 
-            <Form.Group>
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                required
-                type="text" />
+            <Form.Control type="hidden" name="form-name" value="contactv1" />
+
+            <Form.Group className="mb-3" controlId="contactv1.NameInput">
+              <FloatingLabel controlId="floatingInput" label="Your Name" className="mb-3">
+                <Form.Control
+                  required
+                  name="name"
+                  type="text"
+                  placeholder="Normal text" />
+                <Form.Control.Feedback type="invalid">
+                  Please enter your name.
+                </Form.Control.Feedback>
+              </FloatingLabel>
             </Form.Group>
 
-            <Form.Group>
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                required
-                type="text" />
+            <Form.Group className="mb-3" controlId="contactv1.EmailInput">
+              <FloatingLabel controlId="floatingInput" label="Email address" className="mb-3">
+                <Form.Control
+                  required
+                  name="email"
+                  type="email"
+                  placeholder="name@example.com" />
+                <Form.Control.Feedback type="invalid">
+                  Please enter valid email address like (name@example.com).
+                </Form.Control.Feedback>
+              </FloatingLabel>
             </Form.Group>
 
-            <Form.Group>
-              <Form.Label>Message</Form.Label>
-              <Form.Control
-                required
-                type="textarea" />
+            <Form.Group className="mb-3" controlId="contactv1.MessageInput">
+              <FloatingLabel controlId="floatingTextarea" label="Message">
+                <Form.Control
+                  required
+                  name="message"
+                  as="textarea"
+                  placeholder="Leave a message here"
+                  style={{ height: '150px' }} />
+                <Form.Control.Feedback type="invalid">
+                  Please enter a message.
+                </Form.Control.Feedback>
+              </FloatingLabel>
             </Form.Group>
 
             <Button variant="primary" type="submit">
-              Submit if you believe in ipman
+              Submit
             </Button>
 
           </Form>
 
-
-
-          <form
-            name="contactv2"
-            method="POST"
-            data-netlify="true"
-            onSubmit="submit">
-            <p>
-              <label>Your Name: <input type="text" name="name" /></label>
-            </p>
-            <p>
-              <label>Your Email: <input type="email" name="email" /></label>
-            </p>
-            <p>
-              <label>Message: <textarea name="message"></textarea></label>
-            </p>
-            <p>
-              <button type="submit">Send</button>
-            </p>
-          </form>
         </div>
       </div>
     </div>
