@@ -12,8 +12,8 @@ function App() {
           <p className="lead py-5 display-3">Hello World, ipman is back!</p>
 
           <Form
-            name="contact v1"
-            method="post"
+            name="contactv1"
+            method="POST"
             data-netlify="true"
             onSubmit="submit">
 
@@ -21,21 +21,21 @@ function App() {
               <Form.Label>Name</Form.Label>
               <Form.Control
                 required
-                type="text"/>
+                type="text" />
             </Form.Group>
 
             <Form.Group>
               <Form.Label>Email</Form.Label>
               <Form.Control
                 required
-                type="text"/>
+                type="text" />
             </Form.Group>
 
             <Form.Group>
               <Form.Label>Message</Form.Label>
               <Form.Control
                 required
-                type="textarea"/>
+                type="textarea" />
             </Form.Group>
 
             <Button variant="primary" type="submit">
@@ -43,6 +43,27 @@ function App() {
             </Button>
 
           </Form>
+
+
+
+          <form
+            name="contactv2"
+            method="POST"
+            data-netlify="true"
+            onSubmit="submit">
+            <p>
+              <label>Your Name: <input type="text" name="name" /></label>
+            </p>
+            <p>
+              <label>Your Email: <input type="email" name="email" /></label>
+            </p>
+            <p>
+              <label>Message: <textarea name="message"></textarea></label>
+            </p>
+            <p>
+              <button type="submit">Send</button>
+            </p>
+          </form>
         </div>
       </div>
     </div>
