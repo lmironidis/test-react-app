@@ -73,8 +73,6 @@ function App() {
               </FloatingLabel>
             </Form.Group>
 
-            <div data-netlify-recaptcha="true"></div>
-
             <Button variant="primary" type="submit">
               Submit
             </Button>
