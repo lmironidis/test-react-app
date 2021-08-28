@@ -22,7 +22,7 @@ function App() {
     <div className="container-fluid">
       <div className="row">
         <div style={{ padding: "10rem" }}>
-          <p className="lead py-5 display-3">Hello World, ipman is back!</p>
+          <p className="lead py-5 display-3">Hello World!</p>
 
           <Form
             name="contactv1"
@@ -72,6 +72,8 @@ function App() {
                 </Form.Control.Feedback>
               </FloatingLabel>
             </Form.Group>
+
+            <div data-netlify-recaptcha="true"></div>
 
             <Button variant="primary" type="submit">
               Submit
